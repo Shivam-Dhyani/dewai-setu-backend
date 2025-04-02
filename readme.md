@@ -110,7 +110,7 @@ Contributions are welcome! To contribute:
 4. Push your branch:
 
    ```sh
-   git push origin feature/F-<feature-number>-feature-name
+   git push origin feature/F-<module-number>-<feature-number>-feature-name
    ```
 
 5. Open a Pull Request.
