@@ -1,0 +1,65 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.test
+.env.production
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output/
+
+# Build output
+build/
+
+# Cache and lock files
+.cache/
+*.lock
+*.tsbuildinfo
+.eslintcache
+
+# Optional directories
+.bower_components/
+jspm_packages/
+
+# Output of 'npm pack'
+*.tgz
+
+# Optional npm cache directory
+.npm
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# MacOS-specific
+.DS_Store
+
+# Debug and config files for editor or environment
+*.swp
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+.history
