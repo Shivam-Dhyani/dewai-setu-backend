@@ -13,7 +13,7 @@ The backend handles the core functionalities of the Dewai Setu app, including:
 ## 🌐 Related Repository
 
 You can find the Dewai Setu Frontend repository here:
-[Dewai Setu Frontend Repository](#)
+[Dewai Setu Frontend Repository](#) (Yet to come)
 
 ## 📦 Project Setup
 
