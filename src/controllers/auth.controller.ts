@@ -1,59 +1,3 @@
-// import { Request, Response } from "express";
-// import * as AuthService from "../services/auth.service";
-// import {
-//   doctorSignupSchema,
-//   verifyOtpSchema,
-//   signinSchema,
-// } from "../validations/auth.validation";
-
-// /**
-//  * @desc Signup for doctor user
-//  * @route POST /api/auth/sign-up
-//  */
-// export const doctorSignUp = async (req: Request, res: Response) => {
-//   const parsed = doctorSignupSchema.safeParse(req.body);
-
-//   if (!parsed.success) {
-//     return res.status(400).json({ errors: parsed.error.format() });
-//   }
-
-//   const result = await AuthService.registerDoctor(parsed.data);
-//   res.status(201).json(result);
-// };
-
-// /**
-//  * @desc Verify for doctor user
-//  * @route POST /api/auth/verify-email
-//  */
-// export const verifyEmail = async (req: Request, res: Response) => {
-//   const parsed = verifyOtpSchema.safeParse(req.body);
-
-//   if (!parsed.success) {
-//     return res.status(400).json({ errors: parsed.error.format() });
-//   }
-
-//   const result = await AuthService.verifyDoctorEmail(
-//     parsed.data.email,
-//     parsed.data.otp
-//   );
-
-//   if (!result.success) {
-//     return res.status(400).json({ message: result.message });
-//   }
-
-//   return res.status(200).json({ message: result.message });
-// };
-
-// export const signIn = async (req: Request, res: Response) => {
-//   const parsed = signinSchema.safeParse(req.body);
-//   if (!parsed.success) {
-//     return res.status(400).json({ errors: parsed.error.format() });
-//   }
-
-//   const result = await AuthService.signIn(parsed.data);
-//   return res.status(result.status).json(result.response);
-// };
-
 import { Request, Response } from "express";
 import * as AuthService from "../services/auth.service";
 import {
@@ -62,6 +6,10 @@ import {
   signinSchema,
 } from "../validations/auth.validation";
 
+// /**
+//  * @desc Signup for doctor user
+//  * @route POST /api/auth/sign-up
+//  */
 export const doctorSignUp = async (
   req: Request,
   res: Response
@@ -76,12 +24,14 @@ export const doctorSignUp = async (
     const result = await AuthService.registerDoctor(parsed.data);
     res.status(201).json(result);
   } catch (error) {
-    console.log("SignUp Error::", error);
-
     res.status(500).json({ message: `Server Error ${error}` });
   }
 };
 
+// /**
+//  * @desc Verify Email for doctor user
+//  * @route POST /api/auth/verify-email
+//  */
 export const verifyEmail = async (
   req: Request,
   res: Response
@@ -105,10 +55,14 @@ export const verifyEmail = async (
 
     res.status(200).json({ message: result.message });
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    res.status(500).json({ message: `Server Error ${error}` });
   }
 };
 
+// /**
+//  * @desc SignIn to doctor account
+//  * @route POST /api/auth/sign-in
+//  */
 export const signIn = async (req: Request, res: Response): Promise<void> => {
   try {
     const parsed = signinSchema.safeParse(req.body);
