@@ -4,7 +4,8 @@ dotenv.config();
 import express from "express";
 import connectDB from "./src/config/db";
 import exampleRoutes from "./src/routes/exampleRoutes";
-import errorHandler from "./src/middleware/errorHandler";
+import errorHandler from "./src/middlewares/errorHandler";
+import authRoutes from "./src/routes/auth.routes";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,6 +18,7 @@ connectDB();
 
 // Routes
 app.use("/api/example", exampleRoutes);
+app.use("/api/auth", authRoutes);
 
 // Global Error Handling Middleware
 app.use(errorHandler);
