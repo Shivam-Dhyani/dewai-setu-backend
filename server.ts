@@ -6,6 +6,9 @@ import connectDB from "./src/config/db";
 import exampleRoutes from "./src/routes/exampleRoutes";
 import errorHandler from "./src/middlewares/errorHandler";
 import authRoutes from "./src/routes/auth.routes";
+import specializationRoutes from "./src/routes/specialization.routes";
+import stateRoutes from "./src/routes/state.routes";
+import cityRoutes from "./src/routes/city.routes";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,6 +22,10 @@ connectDB();
 // Routes
 app.use("/api/example", exampleRoutes);
 app.use("/api/auth", authRoutes);
+
+app.use("/api/specializations", specializationRoutes);
+app.use("/api/states", stateRoutes);
+app.use("/api/cities", cityRoutes);
 
 // Global Error Handling Middleware
 app.use(errorHandler);

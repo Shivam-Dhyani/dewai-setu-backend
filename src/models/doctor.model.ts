@@ -1,3 +1,4 @@
+// models/doctor.model.ts
 import mongoose, { Schema } from "mongoose";
 
 const doctorSchema = new Schema(
@@ -5,9 +6,9 @@ const doctorSchema = new Schema(
     firstName: String,
     lastName: String,
     email: { type: String, unique: true },
-    specializationId: String,
-    stateId: String,
-    cityId: String,
+    specializationId: { type: Schema.Types.ObjectId, ref: "Specialization" },
+    stateId: { type: Schema.Types.ObjectId, ref: "State" },
+    cityId: { type: Schema.Types.ObjectId, ref: "City" },
     address: String,
     pincode: String,
     phone: String,
