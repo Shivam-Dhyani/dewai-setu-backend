@@ -1,17 +1,16 @@
-// src/middleware/errorHandler.ts - Error Handling Middleware
 import { Request, Response, NextFunction } from "express";
 
-const errorHandler = (
-  err: Error,
+export const globalErrorHandler = (
+  err: any,
   req: Request,
   res: Response,
   next: NextFunction
-): void => {
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+) => {
+  let statusCode = err.statusCode || 500;
+  let message = err.message || "Something went wrong";
+
   res.status(statusCode).json({
-    message: err.message,
-    stack: process.env.NODE_ENV === "production" ? null : err.stack,
+    status: err.status || "error",
+    message,
   });
 };
-
-export default errorHandler;

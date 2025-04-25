@@ -24,7 +24,7 @@ export const doctorSignUp = async (
     const result = await AuthService.registerDoctor(parsed.data);
     res.status(201).json(result);
   } catch (error) {
-    res.status(500).json({ message: `Server Error ${error}` });
+    throw error;
   }
 };
 

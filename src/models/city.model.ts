@@ -9,4 +9,7 @@ const citySchema = new Schema(
   { timestamps: true }
 );
 
+// 🛡 Enforce unique city name per state
+citySchema.index({ name: 1, stateId: 1 }, { unique: true });
+
 export default mongoose.model("City", citySchema);
