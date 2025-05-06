@@ -4,6 +4,7 @@ import {
   createSpecializationSchema,
   updateSpecializationSchema,
 } from "../validations/specialization.validation";
+import { AppError } from "../utils/error";
 
 export const createSpecialization = async (
   req: Request,
@@ -35,14 +36,25 @@ export const updateSpecialization = async (
     return;
   }
 
-  const updated = await Specialization.findByIdAndUpdate(id, parsed.data, {
+  const updatedObj = await Specialization.findByIdAndUpdate(id, parsed.data, {
     new: true,
   });
-  res.status(200).json(updated);
+
+  if (updatedObj) {
+    res.status(200).json(updatedObj);
+  } else {
+    throw new AppError("Invalid Id", 400);
+  }
 };
 
 export const deleteSpecialization = async (req: Request, res: Response) => {
   const { id } = req.params;
-  await Specialization.findByIdAndDelete(id);
-  res.status(204).send();
+  const deletedObj = await Specialization.findByIdAndDelete(id);
+
+  // res.status(204).send();
+  if (deletedObj) {
+    res.status(200).json(deletedObj);
+  } else {
+    throw new AppError("Invalid Id", 400);
+  }
 };

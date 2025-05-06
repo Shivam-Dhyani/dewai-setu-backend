@@ -15,7 +15,7 @@ export const doctorSignupSchema = z
     pincode: z.string().min(6).max(6),
     phone: z.string().min(10).max(10),
     password: z.string().min(6),
-    confirmPassword: z.string(),
+    confirmPassword: z.string().min(6),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",

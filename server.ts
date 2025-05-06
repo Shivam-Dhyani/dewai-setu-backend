@@ -22,7 +22,7 @@ connectDB();
 app.use("/api/example", exampleRoutes);
 app.use("/api/auth", authRoutes);
 
-app.use("/api/specializations", specializationRoutes);
+app.use("/api/specialists", specializationRoutes);
 app.use("/api/states", stateRoutes);
 app.use("/api/cities", cityRoutes);
 
